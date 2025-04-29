@@ -15,10 +15,10 @@ O objetivo deste projeto é entender conceitos básicos de criptografia e colabo
 👥 Integrantes
 Integrante 1: Tiago Pinheiro Lemes
 
-Integrante 2
+Integrante 2: João Pedro Venâncio
 
-Integrante 3
+Integrante 3: Mateus Henrique
 
-Integrante 4
+Integrante 4: Jaqueline Barbosa
 
-Integrante 5
+Integrante 5: Rogério Rodrigues
