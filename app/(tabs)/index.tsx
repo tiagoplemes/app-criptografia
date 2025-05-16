@@ -1,75 +1,91 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { router } from 'expo-router';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
 
 export default function HomeScreen() {
+
+  const handlerLogin = () => {
+      //TODO ta faltando a logica de validação
+      router.push('/(tabs)/inputCripto');
+  }
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <View style={styles.container}>
+      <Text style={styles.titleText}>CRIPTA</Text>
+
+      <TouchableOpacity style={styles.buttonEntrar} onPress={() => {handlerLogin()}}>
+        <Text>Entrar</Text>
+      </TouchableOpacity>
+
+      <View style={styles.rowButtons}>
+          <TouchableOpacity style={styles.buttonSobre}>
+              <Text>Sobre</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.buttonSugestao}>
+              <Text style={styles.textSugestao}>Sugestão</Text>
+          </TouchableOpacity>
+      </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
+  titleText: {
+    fontWeight: '900',
+    fontSize: 64,
+    top: 350,
+    left: 100,
+  },
+  container: {
+    flex: 1,
+  },
+  buttonEntrar: {
+    width: 70,
+    height: 40,
+    backgroundColor: '#71E05B',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 12,
+    marginTop: 500,
+    left: 175,
+    borderWidth: 1,
+    borderColor: '#00000',
+    boxShadow: '0px 4px 4px 0px #868684',
+  },
+  buttonSobre: {
+    width: 70,
+    height: 40,
+    backgroundColor: '#E3E3E3',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 12,
+    marginTop: 10,
+    left: 40,
+    borderWidth: 1,
+    borderColor: '#00000',
+    boxShadow: '0px 4px 4px 0px #868684',
+  },
+  buttonSugestao: {
+    width: 96,
+    height: 40,
+    backgroundColor: '#2C2C2C',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 12,
+    marginTop: 10,
+    marginLeft: 50,
+    borderWidth: 1,
+    borderColor: '#FB0000',
+    boxShadow: '0px 4px 4px 0px #868684',
+  },
+  textSugestao: {
+    color: '#ffff',
+  },
+  rowButtons: {
+    display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+    justifyContent: 'center',
   },
 });
