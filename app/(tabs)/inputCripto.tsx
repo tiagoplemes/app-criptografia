@@ -5,7 +5,6 @@ import { useState } from "react";
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 
-
 export default function Criptografia() {
 
     const [texto, setTexto] = useState("Nome Criptografia");
@@ -73,7 +72,7 @@ export default function Criptografia() {
                 </Picker>
             </View>
 
-            <Text>Você escolheu a criptografia: {selecionado}</Text>
+            <Text style={styles.toolTip}>Você escolheu a criptografia: {selecionado}</Text>
 
             <View style={styles.container}>
                 <Text style={styles.label}>Digite seu texto:</Text>
@@ -156,23 +155,30 @@ const styles = StyleSheet.create({
     },
     container: {
     padding: 24,
-  },
-  label: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginTop: 16,
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    padding: 10,
-    fontSize: 16,
-    borderRadius: 8,
-    marginTop: 8,
-  },
-  resultado: {
-    marginTop: 8,
-    fontSize: 18,
-    color: '#444',
-  },
+    },
+    label: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        marginTop: 16,
+    },
+    input: {
+        borderWidth: 1,
+        borderColor: '#ccc',
+        padding: 10,
+        fontSize: 16,
+        height: 100,
+        width: '100%',
+        borderRadius: 8,
+        marginTop: 8,
+    },
+    resultado: {
+        marginTop: 8,
+        fontSize: 18,
+        color: '#444',
+    },
+    toolTip: {
+        fontSize: 15,
+        color: "#1e1e1e",
+        left: 20,
+    },
 });
