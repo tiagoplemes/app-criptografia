@@ -81,11 +81,18 @@ export default function Criptografia() {
                     value={textoOriginal}
                     onChangeText={handleChange}
                     placeholder="Digite aqui"
+                    multiline={true}         // permite várias linhas
+                    textAlignVertical="top"  // alinha o texto ao topo
+                    maxLength={1800}
                 />
 
-                <Text style={styles.label}>Texto criptografado:</Text>
-                <Text style={styles.resultado}>{textoCriptografado}</Text>
+                {/*<Text style={styles.label}>Texto criptografado:</Text>
+                <Text style={styles.resultado}>{textoCriptografado}</Text>*/}
             </View>
+
+            <TouchableOpacity style={styles.buttonCriptografar} onPress={() => router.push(`/fimCripto?escolhaCripto=${encodeURIComponent(selecionado)}&texto=${encodeURIComponent(textoOriginal)}`)}>
+                <Text style={styles.textButtonCriptografar}>CRIPTOGRAFAR</Text>
+            </TouchableOpacity>
         </View>
     );
 }
@@ -166,7 +173,7 @@ const styles = StyleSheet.create({
         borderColor: '#ccc',
         padding: 10,
         fontSize: 16,
-        height: 100,
+        height: 300,
         width: '100%',
         borderRadius: 8,
         marginTop: 8,
@@ -181,4 +188,19 @@ const styles = StyleSheet.create({
         color: "#1e1e1e",
         left: 20,
     },
+    buttonCriptografar: {
+        backgroundColor: "green",
+        width: 250,
+        borderRadius: 12,
+        height: 50,
+        left: 70,
+        alignItems: "center",
+        justifyContent: "center",
+        borderWidth: 1,
+        borderColor: '#00000',
+        boxShadow: '0px 4px 4px 0px #868684',
+    },
+    textButtonCriptografar: {
+        fontSize: 24,
+    }
 });
