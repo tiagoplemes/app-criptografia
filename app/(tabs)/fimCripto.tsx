@@ -1,3 +1,4 @@
+import { decifraCesar, decifraEyme, decifraVigenere } from '@/utils/desCifras';
 import { Feather } from '@expo/vector-icons';
 import * as Clipboard from 'expo-clipboard';
 import { router, useLocalSearchParams } from 'expo-router';
@@ -34,6 +35,27 @@ const FimCripto = () => {
   };
 
 
+  const descriptografarTexto = () => {
+    let resultado = '';
+
+    switch (escolhaCripto) {
+      case "Cesar":
+        resultado = decifraCesar(textoCriptografado, 3); 
+        break;
+      case "Vigenère":
+        resultado = decifraVigenere(textoCriptografado, "chave"); 
+        break;
+      case "Eyme":
+        resultado = decifraEyme(textoCriptografado); 
+        break;
+      default:
+        resultado = "Erro ao descriptografar!";
+    }
+
+    setTextoCriptografado(resultado); // Atualiza o estado com o texto original
+  };
+
+
   useEffect(() => {
     let resultado = '';
 
@@ -56,7 +78,6 @@ const FimCripto = () => {
 
 
   return (
-
     <View>
       <View style={styles.containerHeader}>
           <TouchableOpacity onPress={() => router.back()} style={styles.boxIcons}>
@@ -82,10 +103,14 @@ const FimCripto = () => {
        </TouchableOpacity>
       </View>
 
+      
       <TouchableOpacity onPress={exportarPDF} style={styles.buttonPDF}>
         <Text style={styles.buttonText}>Exportar PDF</Text>
       </TouchableOpacity>
 
+      <TouchableOpacity style={styles.buttonCriptografar} onPress={descriptografarTexto}>
+        <Text style={styles.textButtonCriptografar}>DESCRIPTOGRAFAR</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -128,7 +153,7 @@ const styles = StyleSheet.create({
         left: 20,
         width: 350,
         borderRadius: 8,
-    },
+  },
   resultado2: {
         marginTop: 20,
         color: '#444',
@@ -139,8 +164,8 @@ const styles = StyleSheet.create({
         left: 20,
         width: 350,
         borderRadius: 8,
-    },
-    button: {
+  },
+  button: {
       display: 'flex',
       flexDirection: 'row',
       gap: 10,
@@ -155,8 +180,8 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#00000',
         boxShadow: '0px 4px 4px 0px #868684',
-    },
-    buttonPDF: {
+  },
+  buttonPDF: {
       display: 'flex',
       flexDirection: 'row',
       gap: 10,
@@ -171,14 +196,29 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#00000',
         boxShadow: '0px 4px 4px 0px #868684',
-    },
-    buttonText: {
+  },
+  buttonText: {
         fontSize: 24,
-    },
-    containerButtons: {
+  },
+  containerButtons: {
       display: 'flex',
       flexDirection: 'row',
       gap: 80,
-    }
-
+  },
+  buttonCriptografar: {
+        backgroundColor: "green",
+        width: 250,
+        borderRadius: 12,
+        height: 50,
+        left: 70,
+        marginTop: 140,
+        alignItems: "center",
+        justifyContent: "center",
+        borderWidth: 1,
+        borderColor: '#00000',
+        boxShadow: '0px 4px 4px 0px #868684',
+  },
+  textButtonCriptografar: {
+    fontSize: 24,
+  },
 });
