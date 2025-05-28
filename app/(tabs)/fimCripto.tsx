@@ -4,7 +4,7 @@ import { router, useLocalSearchParams } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import RNHTMLtoPDF from 'react-native-html-to-pdf';
-import { cifraCesar, cifraEyme, cifraVigenere } from '../utils/cifras';
+import { cifraCesar, cifraEyme, cifraVigenere } from '../../utils/cifras';
 
 
 

@@ -18,11 +18,11 @@ export default function HomeScreen() {
       </TouchableOpacity>
 
       <View style={styles.rowButtons}>
-          <TouchableOpacity style={styles.buttonSobre}>
+          <TouchableOpacity style={styles.buttonSobre} onPress={() => router.push("/sobre")}>
               <Text>Sobre</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.buttonSugestao}>
+          <TouchableOpacity style={styles.buttonSugestao} onPress={() => router.push("/sugestao")}>
               <Text style={styles.textSugestao}>Sugestão</Text>
           </TouchableOpacity>
       </View>
